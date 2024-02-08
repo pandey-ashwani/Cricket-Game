@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="cricket.css">
+    <title>cricket game</title>
+</head>
+<body>
+
+    <h3>cricket game</h3>
+    <div id="choice-button">
+       
+        <button onclick="
+        let computerChoice=generateComputerChoice();
+        let resultMsg=generateResult('ball',computerChoice);
+        showResult('ball',computerChoice,resultMsg);
+        "><img class="choice-images" src="images/ball.png" alt=""></button>
+
+
+        <button onclick="
+        let computerChoice=generateComputerChoice();
+        let resultMsg= generateResult('bat',computerChoice);
+        showResult('bat',computerChoice,resultMsg);
+        "><img class="choice-images" src="images/bat.png" alt=""></button>
+        
+
+        <button onclick="
+        let computerChoice= generateComputerChoice();
+        let resultMsg= generateResult('stump',computerChoice);
+        showResult('stump',computerChoice,resultMsg);
+        "><img class="choice-images" src="images/stump.png" alt=""></button>
+
+
+        <button onclick="
+        score.lost=0;
+        score.tie=0;
+        score.win=0;" ><img class="choice-images" src="images/RESET BUTTON.png" alt=""></button>
+
+    </div>
+
+    <script>
+
+        function generateComputerChoice(){
+                let randomNumber= Math.random()*3;
+                if(randomNumber>0 && randomNumber<=1)
+                {
+                    return 'bat';
+                }
+                else if(randomNumber>1 && randomNumber<=2)
+                {
+                    return 'ball';
+                }
+                else
+                {
+                    return 'stump';
+                }
+        }
+
+        function generateResult(userMove,computerMove){
+                if(userMove==='bat'){
+                        if(computerMove==='bat'){
+                                score.tie++;
+                                return 'its a tie';
+
+                        }
+                        else if(computerMove==='ball'){
+                                score.win++;
+                                return 'user won';
+                        }
+                        else{
+                                score.lost++;
+                                return 'computer has won';
+                        }
+                }
+                else if(userMove==='ball'){
+                        if(computerMove==='bat'){
+                                score.lost++;
+                                return 'comptuer has won';
+
+                        }
+                        else if(computerMove==='ball'){
+                                score.tie++;
+                                return 'its a tie';
+                        }
+                        else{
+                                score.win++;
+                                return 'user won';
+                        }
+                }
+                else{
+                        if(computerMove==='bat'){
+                                score.win++;
+                                return 'user won';
+
+                        }
+                        else if(computerMove==='ball'){
+                                score.lost++;
+                                return 'computer has won';
+                        }
+                        else{
+                                score.tie++;
+                                return 'its a tie';
+                        }
+                }
+            
+        }
+
+        function showResult(userC,computerCh,result){
+               alert(`
+               You have Chosen ${userC}
+               Computer Choice is ${computerCh}
+               ${result}
+               ${score.displayScore()}`)
+               }
+
+       let score={
+                win:0,
+                lost:0,
+                tie:0,
+                };
+
+        score.displayScore =function() {
+                return `win:${score.win}, lost:${score.lost}, tie:${score.tie}`;
+                };
+
+   </script>
+
+    
+</body>
+</html>

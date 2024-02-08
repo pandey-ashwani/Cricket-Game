@@ -1,0 +1,23 @@
+body{
+    text-align: center;
+    background-image: url(images/Best-cricket-games-for-iPhone-and-iPad-Top-10-free-iOS-games.jpg);
+    background-size: 100%;
+}
+
+h3{
+    font-size: 50px;
+    text-transform: uppercase;
+    color: brown;
+}
+
+#choice-button{
+    /* background-color: blue; */
+    height: 130px;
+    width: 80%;
+    margin: 0% 10% ;
+}
+
+.choice-images{
+    height: 100px;
+    margin: 5px;
+}
